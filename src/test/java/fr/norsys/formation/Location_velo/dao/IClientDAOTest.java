@@ -40,8 +40,9 @@ public class IClientDAOTest {
 	}
 
 	/**
-	 * étant donné un nouveau client (toto avec id=13) -quand je le souvegarde
-	 * dans le BD -et que je demande de retourner ce client a partir de BD
+	 * étant donné un nouveau client (toto avec id=13) 
+	 * -quand je le souvegarde
+	 * dans le BD et que je demande de retourner ce client a partir de BD
 	 * -alors je trouve le client (toto avec id=13)
 	 * 
 	 * @throws Exception
@@ -62,8 +63,9 @@ public class IClientDAOTest {
 	}
 
 	/**
-	 * etant donné un client dont l'id est 12 quand je cherche dans la BD ce
-	 * cleint alors je dois recuperer le client dont l'id est 12
+	 * -etant donné un client dont l'id est 12 
+	 * -quand je cherche dans la BD ce cleint
+	 * - alors je dois recuperer le client dont l'id est 12
 	 * 
 	 * @throws Exception
 	 */
@@ -78,8 +80,9 @@ public class IClientDAOTest {
 
 
 	/**
-	 * etant donné qu'in veux supprimer le client dont l'id =12 quand on cherche
-	 * ce client apres la supression alors le client retourné doit etre null
+	 * -etant donné qu'on veux supprimer le client dont l'id =12 
+	 * -quand on cherche ce client apres la supression 
+	 * -alors le client retourné doit etre null
 	 */
 
 	public void deleteClient12VerifyQuIlEstNull() throws SQLException {

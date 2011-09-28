@@ -3,10 +3,9 @@
  */
 package fr.norsys.formation.locationVelo.service;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
+import static org.junit.Assert.*;
+import static org.mockito.Mockito.*;
+
 
 import java.sql.SQLException;
 
@@ -37,7 +36,7 @@ public class ClientServiceTest {
 
 	/**
 	 * etant donné un client dont l'id est 12 quand je cherche dans la BD ce
-	 * cleint alors je dois recuperer le client dont l'id est 12
+	 * client alors je dois recuperer le client dont l'id est 12
 	 * 
 	 * @throws Exception
 	 */
@@ -47,8 +46,28 @@ public class ClientServiceTest {
 		clientService.setClientDAO(clientDAOMock);
 		Client client = clientService.findByIdClient(12);
 		assertNotNull("client trouvé ", client);
-		assertEquals(12,client.getIdClient());
+		assertEquals(12, client.getIdClient());
+		verify(clientDAOMock, times(1)).findById(12);
+	}
 
+	/**
+	 * -etant donné qu'on veux supprimer le client dont l'id =12 et qui n'existe pas dans la BD
+	 * -quand on cherche ce client apres la supression
+	 * -alors une exception de type sqlException doit etre declenchée
+	 * @throws SQLException 
+	 */
+	@Test
+
+	public void deleteClient12declencheExceptionSql() throws SQLException{
+		clientDAOMock = mock(ClientDAO.class, "clientDAO");
+
+		doThrow(new SQLException()).when(clientDAOMock).delete(12);
+		
+		try {
+			clientDAOMock.delete(12); 
+			} catch (SQLException e) {
+			assertTrue("levee exception", true);
+			}
 	}
 
 }
