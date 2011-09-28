@@ -7,9 +7,12 @@ import fr.norsys.formation.locationVelo.vo.Client;
 
 public class ClientServiceImpl implements ClientService {
 	private ClientDAO clientDAO;
-
+/*
+ * (non-Javadoc)
+ * @see fr.norsys.formation.locationVelo.service.ClientService#findByIdClient(int)
+ */
 	public Client findByIdClient(int idClient) throws SQLException {
-		// TODO Auto-generated method stub
+	
 
 		return clientDAO.findById(idClient);
 	}
@@ -28,15 +31,21 @@ public class ClientServiceImpl implements ClientService {
 	public void setClientDAO(ClientDAO clientDAO) {
 		this.clientDAO = clientDAO;
 	}
-
+/*
+ * (non-Javadoc)
+ * @see fr.norsys.formation.locationVelo.service.ClientService#deleteClient(int)
+ */
 	public void deleteClient(int idClient) throws SQLException {
-		// TODO Auto-generated method stub
+		
 		clientDAO.delete(idClient);
 		
 	}
-
+/*
+ * (non-Javadoc)
+ * @see fr.norsys.formation.locationVelo.service.ClientService#createClient(fr.norsys.formation.locationVelo.vo.Client)
+ */
 	public void createClient(Client client) throws SQLException {
-		// TODO Auto-generated method stub
+		
 		clientDAO.create(client);
 	}
 

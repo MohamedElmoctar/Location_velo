@@ -11,7 +11,7 @@ import fr.norsys.formation.locationVelo.vo.Client;
 
 public class ClientDAOImpl implements ClientDAO {
 
-	Connection connexion;
+	private Connection connexion;
 
 	private String createQuery = "INSERT INTO CLIENT( ID_CLIENT, NOM, TELEPHONE ) VALUES (?, ?, ?)";
 	private String findById = "SELECT ID_CLIENT, NOM, TELEPHONE FROM CLIENT WHERE ID_CLIENT=?";
@@ -23,7 +23,10 @@ public class ClientDAOImpl implements ClientDAO {
 	public ClientDAOImpl(Connection connexion) {
 		this.connexion = connexion;
 	}
-
+/*
+ * (non-Javadoc)
+ * @see fr.norsys.formation.Location_velo.dao.ClientDAO#create(fr.norsys.formation.locationVelo.vo.Client)
+ */
 	public void create(Client client) throws SQLException {
 		// TODO Auto-generated method stub
 		PreparedStatement stmt = connexion.prepareStatement(createQuery);
@@ -34,12 +37,11 @@ public class ClientDAOImpl implements ClientDAO {
 		stmt.executeUpdate();
 		stmt.close();
 
-		// Client clientRes = mapResultSetToClient(res);
-		// stmt.executeUpdate();
-
-		// return clientRes;
 	}
-
+/*
+ * (non-Javadoc)
+ * @see fr.norsys.formation.Location_velo.dao.ClientDAO#findById(int)
+ */
 	public Client findById(int idClient) throws SQLException {
 		// TODO Auto-generated method stub
 
@@ -48,6 +50,7 @@ public class ClientDAOImpl implements ClientDAO {
 		ResultSet rs = stmt.executeQuery();
 		Client clientRes = mapResultSetToClient(rs);
 		stmt.close();
+		rs.close();
 		return clientRes;
 	}
 
@@ -67,7 +70,10 @@ public class ClientDAOImpl implements ClientDAO {
 			return null;
 		}
 	}
-
+/*
+ * (non-Javadoc)
+ * @see fr.norsys.formation.Location_velo.dao.ClientDAO#delete(int)
+ */
 	public void delete(int idClient) throws SQLException {
 		// TODO Auto-generated method stub
 
