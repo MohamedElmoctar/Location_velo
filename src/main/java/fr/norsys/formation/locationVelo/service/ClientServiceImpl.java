@@ -29,4 +29,15 @@ public class ClientServiceImpl implements ClientService {
 		this.clientDAO = clientDAO;
 	}
 
+	public void deleteClient(int idClient) throws SQLException {
+		// TODO Auto-generated method stub
+		clientDAO.delete(idClient);
+		
+	}
+
+	public void createClient(Client client) throws SQLException {
+		// TODO Auto-generated method stub
+		clientDAO.create(client);
+	}
+
 }

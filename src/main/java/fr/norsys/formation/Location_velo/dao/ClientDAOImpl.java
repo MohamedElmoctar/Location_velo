@@ -51,7 +51,6 @@ public class ClientDAOImpl implements ClientDAO {
 		return clientRes;
 	}
 
-	
 	private Client mapResultSetToClient(ResultSet rs) throws SQLException {
 		List<Client> clientList = new ArrayList<Client>();
 		Client client = new Client();
@@ -62,8 +61,11 @@ public class ClientDAOImpl implements ClientDAO {
 			clientList.add(client);
 
 		}
-
-		return clientList.get(0);
+		if (!clientList.isEmpty()) {
+			return clientList.get(0);
+		} else {
+			return null;
+		}
 	}
 
 	public void delete(int idClient) throws SQLException {

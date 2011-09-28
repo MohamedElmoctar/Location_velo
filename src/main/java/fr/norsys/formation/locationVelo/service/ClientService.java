@@ -17,5 +17,7 @@ public interface ClientService {
 	public Client findByIdClient(int idClient) throws SQLException;
 	public ClientDAO getClientDAO();
 	public void setClientDAO(ClientDAO clientDAO);
+	public void deleteClient(int idClient) throws SQLException;
+	public void createClient(Client client) throws SQLException;
 
 }
